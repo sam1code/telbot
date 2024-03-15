@@ -12,19 +12,48 @@ const createTeamRoom = [
   "why do I need a teamroom",
 ];
 
+const createWordDocument = [
+  "create word document",
+  "create a word document",
+  "create a new document",
+  "create a document",
+  "create a docx",
+  "create a Microsoft Word document",
+  "create a doc",
+  "create docx",
+  "create a file",
+  "create a Microsoft doc file",
+  "create a Microsoft docx file",
+  "create a docx file",
+  "creating a word",
+  "creating a document",
+  "creating a Microsoft Word",
+  "creating a new document",
+  "creating a docx",
+  "creating a Microsoft Word document",
+  "creating a docx file",
+  "creating a file",
+  "creating doc",
+];
+
 bot.on("message", (msg) => {
   const chatId = msg.chat.id;
   const text = msg.text.toLowerCase();
 
   switch (true) {
-    case text.includes("hi") ||
-      text.includes("hello") ||
-      text.includes("hey") ||
-      text.includes("yo") ||
-      text.includes("sup") ||
-      text.includes("howdy") ||
-      text.includes("hola") ||
-      text.includes("/start"):
+    case text === "/start" ||
+      text === "help" ||
+      text === "hello" ||
+      text === "hi" ||
+      text === "hey" ||
+      text === "yo" ||
+      text === "sup" ||
+      text === "start" ||
+      text === "hola" ||
+      text === "bonjour" ||
+      text === "ciao" ||
+      text === "hallo" ||
+      text === "привет":
       bot.sendMessage(chatId, "Hello there!").then(() => {
         bot.sendMessage(
           chatId,
@@ -66,6 +95,28 @@ bot.on("message", (msg) => {
         }
       );
       break;
+    case createWordDocument.some((el) => text.includes(el)):
+      bot.sendMessage(
+        chatId,
+        `Hello! I can help you with that. To create a word document, you can follow these steps:`,
+        {
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: "Show All the Steps",
+                  callback_data: "all_steps_create_word_document",
+                },
+                {
+                  text: "Show Steps One by One",
+                  callback_data: "next_step_create_word_document",
+                },
+              ],
+            ],
+          },
+        }
+      );
+      break;
     default:
       bot.sendMessage(chatId, "Sorry, I don't understand that.");
   }
@@ -73,11 +124,10 @@ bot.on("message", (msg) => {
 
 bot.on("callback_query", (query) => {
   const chatId = query.message.chat.id;
-  const data = query.data;
+  const data = query.data.toLowerCase();
 
   switch (true) {
     case data.includes("create_teamroom"):
-      console.log("create_teamroom");
       createTeamRoomChat(data, chatId, bot);
       break;
     default:

@@ -4,6 +4,29 @@ function createTeamRoom(data, chatId, bot) {
     case "stop_create_teamroom":
       bot.sendMessage(chatId, "Process stopped.");
       break;
+
+    case "create_teamroom":
+      bot.sendMessage(
+        chatId,
+        `Hello! I can help you with that. To create a teamroom, you can follow these steps:`,
+        {
+          reply_markup: {
+            inline_keyboard: [
+              [
+                {
+                  text: "Show All the Steps",
+                  callback_data: "all_steps_create_teamroom",
+                },
+                {
+                  text: "Show Steps One by One",
+                  callback_data: "next_step_create_teamroom",
+                },
+              ],
+            ],
+          },
+        }
+      );
+      break;
     case "all_steps_create_teamroom":
       bot
         .sendMessage(
