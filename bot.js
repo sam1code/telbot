@@ -120,36 +120,7 @@ bot.on("message", (msg) => {
       text === "ciao" ||
       text === "hallo" ||
       text === "привет":
-      bot.sendMessage(chatId, "Hello there!").then(() => {
-        bot.sendMessage(
-          chatId,
-          `Here are all the options you can ask me about:`,
-          {
-            reply_markup: {
-              inline_keyboard: [
-                [
-                  {
-                    text: "Create a Teamroom",
-                    callback_data: "create_teamroom",
-                  },
-                ],
-                [
-                  {
-                    text: "Create a Word Document",
-                    callback_data: "create_word_document",
-                  },
-                ],
-                [
-                  {
-                    text: "Send a Document",
-                    callback_data: "send_document",
-                  },
-                ],
-              ],
-            },
-          }
-        );
-      });
+      bot.sendMessage(chatId, "Hello there! How can I help you today?");
       break;
     case createTeamRoom.some((el) => text.includes(el)):
       bot.sendMessage(

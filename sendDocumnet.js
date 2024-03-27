@@ -91,24 +91,6 @@ function sendDocument(data, chatId, bot) {
                     callback_data: "next_step_create_teamroom",
                   },
                 ],
-                [
-                  {
-                    text: "Create a Teamroom",
-                    callback_data: "create_teamroom",
-                  },
-                ],
-                [
-                  {
-                    text: "Create a Word Document",
-                    callback_data: "create_word_document",
-                  },
-                ],
-                [
-                  {
-                    text: "Send a Document",
-                    callback_data: "send_document",
-                  },
-                ],
               ],
             },
           })
@@ -214,24 +196,6 @@ function sendDocument(data, chatId, bot) {
                     {
                       text: "Show All Steps Again one by one",
                       callback_data: "next_step_send_document",
-                    },
-                  ],
-                  [
-                    {
-                      text: "Create a Teamroom",
-                      callback_data: "create_teamroom",
-                    },
-                  ],
-                  [
-                    {
-                      text: "Create a Word Document",
-                      callback_data: "create_word_document",
-                    },
-                  ],
-                  [
-                    {
-                      text: "Send a Document",
-                      callback_data: "send_document",
                     },
                   ],
                 ],
